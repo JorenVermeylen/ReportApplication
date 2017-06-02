@@ -62,7 +62,8 @@ public class ReportServiceImpl implements ReportService {
         try {
             Report report = new Report(reportName);
             reportDB.addReport(report);
-            Files.write(Paths.get(report.getFileName() + ".txt"), detailsGatherer.getPlace(placeId), StandardOpenOption.CREATE);
+            Files.write(Paths.get(reportName + ".txt"), detailsGatherer.getPlace(placeId), StandardOpenOption.CREATE);
+            System.out.println("done writing file");
         } catch (IOException | DBException | DomainException e) {
             throw new ServiceException(e.getMessage());
         }

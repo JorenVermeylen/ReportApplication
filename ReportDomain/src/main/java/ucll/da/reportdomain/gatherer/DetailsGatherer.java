@@ -2,14 +2,10 @@ package ucll.da.reportdomain.gatherer;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.*;
-import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import ucll.da.reportdomain.domain.DomainException;
@@ -24,8 +20,7 @@ public class DetailsGatherer {
             //localhost: http://localhost:8080/PlaceWeb/place/{placeId}
             //server: http://193.191.187.14:11108/PlaceWeb/place/{placeId}
             String details = this.readUrl("http://localhost:8080/PlaceWeb/place/" + placeId);
-            JSONArray arr = new JSONArray(details);
-            JSONObject jsonObject = arr.getJSONObject(0);
+            JSONObject jsonObject = new JSONObject(details);
             JSONObject placeDetails = null;
             if (jsonObject.has("placeDetails")) {
                 placeDetails = jsonObject.getJSONObject("placeDetails");

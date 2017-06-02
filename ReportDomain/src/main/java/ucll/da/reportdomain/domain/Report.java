@@ -51,13 +51,13 @@ public class Report {
         return fileName;
     }
 
-    public void setFileName(String reportId) throws DomainException {
-        if (reportId == null || reportId.equals("")) {
-            throw new DomainException("The reportId can't be null or empty.");
+    public void setFileName(String fileName) throws DomainException {
+        if (fileName == null || fileName.equals("")) {
+            throw new DomainException("The fileName can't be null or empty.");
         }
-        this.fileName = reportId;
+        this.fileName = fileName;
     }
-
+    
     public Calendar getDate() {
         return date;
     }
