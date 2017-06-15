@@ -15,7 +15,7 @@ import ucll.da.reportdomain.domain.DomainException;
  */
 public class DetailsGatherer {
 
-    public List<String> getPlace(long placeId) throws DomainException {
+    public List<String> getPlace(Long placeId) throws DomainException {
         try {
             //localhost: http://localhost:8080/PlaceWeb/place/{placeId}
             //server: http://193.191.187.14:11108/PlaceWeb/place/{placeId}
@@ -24,37 +24,39 @@ public class DetailsGatherer {
             JSONObject placeDetails = null;
             if (jsonObject.has("placeDetails")) {
                 placeDetails = jsonObject.getJSONObject("placeDetails");
+                String address = null;
+                if (placeDetails.has("address")) {
+                    address = placeDetails.getString("address");
+                }
+                double latitude = -1;
+                if (placeDetails.has("latitude")) {
+                    latitude = placeDetails.getDouble("latitude");
+                }
+                double longitude = -1;
+                if (placeDetails.has("longitude")) {
+                    longitude = placeDetails.getDouble("longitude");
+                }
+                String name = null;
+                if (placeDetails.has("name")) {
+                    name = placeDetails.getString("name");
+                }
+                String openingHours = null;
+                if (placeDetails.has("openingHours")) {
+                    openingHours = placeDetails.getString("openingHours");
+                }
+                double rating = -1;
+                if (placeDetails.has("rating")) {
+                    rating = placeDetails.getDouble("rating");
+                }
+                String text = "Place: " + name + "\n"
+                        + "Address: " + address + "\n"
+                        + "Location: " + latitude + "," + longitude + "\n"
+                        + "Rating: " + rating + "/5" + "\n"
+                        + "Opening hours: " + openingHours;
+                return Arrays.asList(text);
+            } else {
+                return null;
             }
-            String address = null;
-            if (placeDetails.has("address")) {
-                address = placeDetails.getString("address");
-            }
-            double latitude = -1;
-            if (placeDetails.has("latitude")) {
-                latitude = placeDetails.getDouble("latitude");
-            }
-            double longitude = -1;
-            if (placeDetails.has("longitude")) {
-                longitude = placeDetails.getDouble("longitude");
-            }
-            String name = null;
-            if (placeDetails.has("name")) {
-                name = placeDetails.getString("name");
-            }
-            String openingHours = null;
-            if (placeDetails.has("openingHours")) {
-                openingHours = placeDetails.getString("openingHours");
-            }
-            double rating = -1;
-            if (placeDetails.has("rating")) {
-                rating = placeDetails.getDouble("rating");
-            }
-            String text = "Place: " + name + "\n"
-                    + "Address: " + address + "\n"
-                    + "Location: " + latitude + "," + longitude + "\n"
-                    + "Rating: " + rating + "/5" + "\n"
-                    + "Opening hours: " + openingHours;
-            return Arrays.asList(text);
         } catch (IOException | JSONException e) {
             throw new DomainException(e.getMessage());
         }

@@ -13,8 +13,8 @@ public interface ReportDB {
 
     Report getReportById(Long id) throws DBException;
 
-    void addReport(Report report) throws DBException;
+    boolean addReport(Report report) throws DBException;
 
-    void deleteReport(Long id) throws DBException;
+    boolean deleteReport(Long id) throws DBException;
 
 }

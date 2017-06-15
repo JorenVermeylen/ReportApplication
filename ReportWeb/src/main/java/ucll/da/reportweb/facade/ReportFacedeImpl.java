@@ -32,13 +32,12 @@ public class ReportFacedeImpl implements ReportFacade {
     }
     
     @Override
-    public void deleteReport(Long id) throws ServiceException {
-        reportService.deleteReport(id);
+    public boolean deleteReport(Long id) throws ServiceException {
+        return reportService.deleteReport(id);
     }
 
     @Override
-    public void generateReportFromPlace(String reportName, Long placeId) throws ServiceException {
-        reportService.generateReportFromPlace(reportName, placeId);
+    public Report generateReportFromPlace(String reportName, Long placeId) throws ServiceException {
+        return reportService.generateReportFromPlace(reportName, placeId);
     }
-
 }

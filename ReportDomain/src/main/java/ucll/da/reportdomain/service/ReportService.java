@@ -13,7 +13,7 @@ public interface ReportService {
 
     Report getReportById(Long id) throws ServiceException;
 
-    void deleteReport(Long id) throws ServiceException;
+    boolean deleteReport(Long id) throws ServiceException;
 
-    void generateReportFromPlace(String reportName, Long placeId) throws ServiceException;
+    Report generateReportFromPlace(String reportName, Long placeId) throws ServiceException;
 }

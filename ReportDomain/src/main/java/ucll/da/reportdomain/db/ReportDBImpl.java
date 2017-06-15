@@ -43,10 +43,11 @@ public class ReportDBImpl implements ReportDB {
 
     @Transactional
     @Override
-    public void addReport(Report report) throws DBException {
+    public boolean addReport(Report report) throws DBException {
         try {
             em.persist(report);
             em.flush();
+            return true;
         } catch (Exception e) {
             throw new DBException("Can't add the report. " + e.getMessage());
         }
@@ -54,11 +55,12 @@ public class ReportDBImpl implements ReportDB {
 
     @Transactional
     @Override
-    public void deleteReport(Long id) throws DBException {
+    public boolean deleteReport(Long id) throws DBException {
         try {
             Report report = this.getReportById(id);
             em.remove(report);
             em.flush();
+            return true;
         } catch (Exception e) {
             throw new DBException("Can't delete the report. " + e.getMessage());
         }

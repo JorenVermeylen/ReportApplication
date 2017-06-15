@@ -49,22 +49,23 @@ public class ReportServiceImpl implements ReportService {
     }
 
     @Override
-    public void deleteReport(Long id) throws ServiceException {
+    public boolean deleteReport(Long id) throws ServiceException {
         try {
-            reportDB.deleteReport(id);
+            return reportDB.deleteReport(id);
         } catch (DBException e) {
             throw new ServiceException(e.getMessage());
         }
     }
 
     @Override
-    public void generateReportFromPlace(String reportName, Long placeId) throws ServiceException {
+    public Report generateReportFromPlace(String reportName, Long placeId) throws ServiceException {
         try {
             Report report = new Report(reportName);
-            report.setDetails(detailsGatherer.getPlace(placeId).toString());
+            report.setDetails(detailsGatherer.getPlace(placeId));
             reportDB.addReport(report);
             Files.write(Paths.get(reportName + ".txt"), detailsGatherer.getPlace(placeId), StandardOpenOption.CREATE);
             System.out.println("done writing file");
+            return report;
         } catch (IOException | DBException | DomainException e) {
             throw new ServiceException(e.getMessage());
         }

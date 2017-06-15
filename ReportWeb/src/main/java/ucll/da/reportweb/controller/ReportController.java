@@ -46,18 +46,16 @@ public class ReportController {
     }
 
     @DELETE
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
     @Path("/{id}")
-    public void deleteReport(@PathParam("id") Long id) throws ServiceException {
-        facade.deleteReport(id);
+    @Produces(MediaType.APPLICATION_JSON)
+    public boolean deleteReport(@PathParam("id") Long id) throws ServiceException {
+        return facade.deleteReport(id);
     }
 
     @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
     @Path("/{reportName}/{placeId}")
-    public void generateReportFromPlace(@PathParam("reportName") String reportName, @PathParam("placeId") Long placeId) throws ServiceException {
-        facade.generateReportFromPlace(reportName, placeId);
+    @Produces(MediaType.APPLICATION_JSON)
+    public Report generateReportFromPlace(@PathParam("reportName") String reportName, @PathParam("placeId") Long placeId) throws ServiceException {
+        return facade.generateReportFromPlace(reportName, placeId);
     }
 }

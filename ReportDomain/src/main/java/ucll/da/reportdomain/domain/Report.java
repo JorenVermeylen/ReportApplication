@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
 import java.util.Calendar;
+import java.util.List;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -25,8 +26,7 @@ public class Report {
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar date;
 
-    
-    private String details;
+    private List<String> details;
     
     public Report() {
 
@@ -72,13 +72,11 @@ public class Report {
         this.date = date;
     }
 
-    public String getDetails() {
+    public List<String> getDetails() {
         return details;
     }
 
-    public void setDetails(String details) {
+    public void setDetails(List<String> details) {
         this.details = details;
     }
-    
-    
 }
