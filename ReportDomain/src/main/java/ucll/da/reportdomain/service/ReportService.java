@@ -5,7 +5,7 @@ import ucll.da.reportdomain.domain.Report;
 import java.util.List;
 
 /**
- * Created by verme on 4/05/2017.
+ * Created by Joren on 4/05/2017.
  */
 public interface ReportService {
 

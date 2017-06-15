@@ -6,7 +6,7 @@ import ucll.da.reportdomain.service.ServiceException;
 import java.util.List;
 
 /**
- * Created by verme on 4/05/2017.
+ * Created by Joren on 4/05/2017.
  */
 public interface ReportFacade {
 

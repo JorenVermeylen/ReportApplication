@@ -17,7 +17,7 @@ import java.util.List;
 import ucll.da.reportdomain.domain.DomainException;
 
 /**
- * Created by verme on 4/05/2017.
+ * Created by Joren on 4/05/2017.
  */
 @Named
 @RequestScoped
@@ -61,6 +61,7 @@ public class ReportServiceImpl implements ReportService {
     public void generateReportFromPlace(String reportName, Long placeId) throws ServiceException {
         try {
             Report report = new Report(reportName);
+            report.setDetails(detailsGatherer.getPlace(placeId).toString());
             reportDB.addReport(report);
             Files.write(Paths.get(reportName + ".txt"), detailsGatherer.getPlace(placeId), StandardOpenOption.CREATE);
             System.out.println("done writing file");

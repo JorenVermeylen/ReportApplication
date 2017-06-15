@@ -19,7 +19,7 @@ public class DetailsGatherer {
         try {
             //localhost: http://localhost:8080/PlaceWeb/place/{placeId}
             //server: http://193.191.187.14:11108/PlaceWeb/place/{placeId}
-            String details = this.readUrl("http://localhost:8080/PlaceWeb/place/" + placeId);
+            String details = this.readUrl("http://193.191.187.14:11108/PlaceWeb/place/" + placeId);
             JSONObject jsonObject = new JSONObject(details);
             JSONObject placeDetails = null;
             if (jsonObject.has("placeDetails")) {

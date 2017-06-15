@@ -11,7 +11,7 @@ import javax.inject.Named;
 import java.util.List;
 
 /**
- * Created by verme on 4/05/2017.
+ * Created by Joren on 4/05/2017.
  */
 @Named
 @RequestScoped

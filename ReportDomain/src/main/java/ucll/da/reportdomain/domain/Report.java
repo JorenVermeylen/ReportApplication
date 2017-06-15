@@ -7,7 +7,7 @@ import java.util.Calendar;
 import javax.validation.constraints.NotNull;
 
 /**
- * Created by verme on 3/05/2017.
+ * Created by Joren on 3/05/2017.
  */
 @Entity(name = "Report")
 public class Report {
@@ -25,6 +25,9 @@ public class Report {
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar date;
 
+    
+    private String details;
+    
     public Report() {
 
     }
@@ -68,4 +71,14 @@ public class Report {
         }
         this.date = date;
     }
+
+    public String getDetails() {
+        return details;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
+    }
+    
+    
 }
